@@ -1,6 +1,6 @@
 package main;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 public class MySolutionTestOld {
 
@@ -8,23 +8,23 @@ public class MySolutionTestOld {
 
     private static int[] arr;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         arr = new int[]{1, 2, 3, 4, 5};
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         System.out.println("finished");
     }
 
-    @Before     // JUnit5-ben: BeforeEach
+    @BeforeEach     // JUnit5-ben: BeforeEach
     public void init() {
         System.out.println("one test is running soon...");
         solution = new MySolution();
     }
 
-    @After      // JUnit5-ben: AfterEach
+    @AfterEach      // JUnit5-ben: AfterEach
     public void tearDown() {
         System.out.println("test finished");
         solution = null;
@@ -36,7 +36,8 @@ public class MySolutionTestOld {
 
         System.out.println("\ttestExample runs...");
 
-        Assert.assertEquals(10, x);
+
+        Assertions.assertEquals(10, x);
     }
 
     @Test
@@ -47,7 +48,7 @@ public class MySolutionTestOld {
 
         System.out.println("\tgetLastNumberTestWithPosNums runs...");
 
-        Assert.assertEquals(2, result);
+        Assertions.assertEquals(2, result);
     }
 
     @Test
@@ -58,7 +59,7 @@ public class MySolutionTestOld {
 
         System.out.println("\tgetLastNumberTestWithOneElementArr runs...");
 
-        Assert.assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     private int[] getArr(int length) {
